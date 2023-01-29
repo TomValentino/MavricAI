@@ -73,6 +73,30 @@ const [middleLoading, setMiddleLoading] = useState(false)
 
 
 
+// Test Function For Saving
+function saveResult() {
+
+    var result = document.getElementsByClassName('actual-response')[0].innerHTML
+    var id = Math.random().toString(36).substring(7);
+    firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).collection('saved').doc(id).set({
+      "Result": result
+    })
+    console.log('saved')
+ 
+}
+
+
+
+// Test Function For Showing The Saved Results
+function showSaved() {
+
+
+
+
+}
+
+
+
 
 
     async function CallOpenAI(input) {
@@ -80,7 +104,7 @@ const [middleLoading, setMiddleLoading] = useState(false)
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
             organization: "org-F9f1ePyq3LoFpsLJTOgbGNY0",
-            apiKey: "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",
+            apiKey: "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",
         });
     
         const openai = new OpenAIApi(configuration)
@@ -99,10 +123,14 @@ const [middleLoading, setMiddleLoading] = useState(false)
         var middle = document.querySelector('.results-container')
         // Create a new div
         var newDiv = document.createElement("div");
-        // Add the class
-        newDiv.classList.add('response-container')
+        newDiv.className= "response-container"
+
+
         // Add the text
-        newDiv.innerHTML = response.data.choices[0].text
+        var newDiv2 = document.createElement("div");
+        newDiv2.innerHTML = response.data.choices[0].text
+        newDiv2.className= "actual-response"
+        newDiv.appendChild(newDiv2)
         // Append it to the middle section
 
         // Create bottom area
@@ -119,6 +147,9 @@ const [middleLoading, setMiddleLoading] = useState(false)
         var saveIcon = document.createElement("img");
         saveIcon.src = '/static/media/heart.08759aa68e464295d5592e0793f68120.svg'
         saveIcon.className = "save-icon"
+        // Add event listener to save icon
+        saveIcon.addEventListener('click', saveResult)
+
 
 
 

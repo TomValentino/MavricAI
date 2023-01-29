@@ -16,6 +16,7 @@ export default function NewProjectModal( { closeNewProjectModal}) {
 
   // Function to create a new project
   const createNewProject = () => {
+    document.getElementsByClassName('popup-btn')[0].innerHTML = "Creating..."
     // Get the value of the input box
     const projectName = document.querySelector('.add-new-name').value
     // Generate a unique ID for the project
@@ -25,6 +26,14 @@ export default function NewProjectModal( { closeNewProjectModal}) {
       "ProjectName": projectName,
       "ProjectID": projectID
     })
+    .finally(() => {
+      document.getElementsByClassName('popup-btn')[0].innerHTML = "Finished!"
+      // closeNewProjectModal()
+      window.location.href = '/builder?projectId=' + projectID
+    
+    })
+
+
   }
 
 

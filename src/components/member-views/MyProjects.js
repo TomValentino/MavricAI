@@ -68,9 +68,6 @@ export default function MyProjects(props) {
 
                 docs.forEach(doc => {
                    
-
-                    console.log(doc.data())
-
                     // Create a new div and add the project name to it
                     const newDiv = document.createElement('div')
                     newDiv.className = "project-tile"
@@ -92,9 +89,9 @@ export default function MyProjects(props) {
                     // Add an event listener to the button
                     newButton.addEventListener('click', (e) => {
                         var projectID = e.target.id
-                        window.history.pushState('page2', projectID, '/builder?projectId=' + projectID);
+                        // window.history.pushState('page2', projectID, '/builder?projectId=' + projectID);
 
-                        // window.location = '/builder?projectId=' + projectID
+                        window.location.href = '/builder?projectId=' + projectID
                     })
 
                     // Append the new div to the saved-projects div
