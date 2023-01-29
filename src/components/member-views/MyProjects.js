@@ -48,17 +48,6 @@ export default function MyProjects(props) {
 
 
 
-    function changeURL() {
-        <>
-        <Link to="/builder?projectId=1234" />
-
-        </>
-    }
-    changeURL()
-
-
-
-
     
     function getProjects() {
 
@@ -76,7 +65,7 @@ export default function MyProjects(props) {
                     // Create a button
                     const newButton = document.createElement('a')
 
-                    newButton.href = '/builder?projectId=' + doc.id
+                    newButton.href = '/builder?id=' + doc.id
                     
 
                     // Give the button ID the ID of the project
