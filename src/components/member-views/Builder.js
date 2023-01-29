@@ -80,21 +80,28 @@ function showSaved() {
     var resultsArea = document.querySelector('.results-container')
     resultsArea.innerHTML = ""
 
-    console.log('working')
-
     // Access firestorage >> get the saved results >> display them
-    firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).collection('saved').get().then((docs) => {
-        docs.forEach((doc) => {
+    firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).collection('saved').get().then((doc) => {
+
+        if (doc.empty) {
+            var div = document.createElement('div')
+            div.innerHTML = "No Saved Results! Save some results to see them here..."
+            div.classList.add('saved-result')
+            resultsArea.append(div)
+        }
+    
+        doc.forEach((doc) => {
             var result = doc.data().Result
             var div = document.createElement('div')
             div.innerHTML = result
             div.classList.add('saved-result')
             resultsArea.append(div)
-        });
+        })
     })
     // Show the active border
     document.getElementById('results').classList.remove('actf')
     document.getElementById('saved').classList.add('actf')
+        
 }
 
 
