@@ -151,7 +151,6 @@ function showSaved() {
             apiKey: process.env.REACT_APP_OPENAI_KEY
         });
 
-        // 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
     
         const openai = new OpenAIApi(configuration)
 
