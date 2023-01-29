@@ -154,7 +154,7 @@ function showSaved() {
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
             organization: "org-F9f1ePyq3LoFpsLJTOgbGNY0",
-            apiKey: "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"
+            apiKey: ""
         });
 
     
@@ -169,6 +169,8 @@ function showSaved() {
             });
     console.log(response.data.choices[0].text);
 
+        // Hide the cool image saying to input some shit...
+        document.querySelector('.no-results-img').classList.add('hidden')
 
         // Test append to middle section
         var middle = document.querySelector('.results-container')
@@ -330,7 +332,15 @@ function showSaved() {
                         <div className="sub-title p20" onClick={showSaved} id="saved">Saved</div>
                     </div>
 
-                    <div className="results-container"></div>
+                    <div className="results-container">
+
+                        <div className="no-results-img">
+                        Write your shit in the search bar...Replace for a sweet ass picture!
+                        </div>
+
+
+
+                    </div>
 
                     <div className="saved-container"></div>
 
