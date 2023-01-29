@@ -24,7 +24,7 @@ export default function Builder(props) {
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const projectID = urlParams.get('projectId')
+    const projectID = urlParams.get('id')
 
 
     // TEST -- Setting the title of the project -- Need to tie in with the loading functions
@@ -148,7 +148,7 @@ function showSaved() {
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
             organization: "org-F9f1ePyq3LoFpsLJTOgbGNY0",
-            apiKey: process.env.REACT_APP_OPENAI_KEY
+            apiKey: "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"
         });
 
     

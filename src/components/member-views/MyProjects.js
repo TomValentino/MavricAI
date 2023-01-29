@@ -91,7 +91,7 @@ export default function MyProjects(props) {
                         var projectID = e.target.id
                         // window.history.pushState('page2', projectID, '/builder?projectId=' + projectID);
 
-                        window.location.href = '/builder?projectId=' + projectID
+                        window.location.href = '/builder?id=' + projectID
                     })
 
                     // Append the new div to the saved-projects div

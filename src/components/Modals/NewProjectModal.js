@@ -29,7 +29,7 @@ export default function NewProjectModal( { closeNewProjectModal}) {
     .finally(() => {
       document.getElementsByClassName('popup-btn')[0].innerHTML = "Finished!"
       // closeNewProjectModal()
-      window.location.href = '/builder?projectId=' + projectID
+      window.location.href = '/builder?id=' + projectID
     
     })
 
