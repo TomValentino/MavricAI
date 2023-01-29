@@ -79,7 +79,7 @@ export default function MyProjects(props) {
                     // Create a button
                     const newButton = document.createElement('a')
 
-                    // newButton.href = '/builder?projectId=' + doc.id
+                    newButton.href = '/builder?projectId=' + doc.id
                     
 
                     // Give the button ID the ID of the project
@@ -105,8 +105,8 @@ export default function MyProjects(props) {
                     })
                 }).finally(() => {
 
-                    const fuckTest = () => {<Link to="/builder?projectId=1234">Hi</Link>}
-                    document.querySelector('.project-tile').appendChild(fuckTest)
+                    // const fuckTest = () => {<Link to="/builder?projectId=1234">Hi</Link>}
+                    // document.querySelector('.project-tile').appendChild(fuckTest)
 
                 })
                
