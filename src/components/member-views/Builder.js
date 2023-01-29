@@ -17,6 +17,8 @@ import Loader from "../loader.svg";
 
 export default function Builder(props) {
 
+    document.title = "Builder"
+
     const { currentUser } = useAuth()
 
 
@@ -27,12 +29,16 @@ export default function Builder(props) {
 
     // TEST -- Setting the title of the project -- Need to tie in with the loading functions
     firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).get().then((doc) => {
+        
         document.querySelector('.project-title-area').innerHTML = doc.data().ProjectName
+    
     })
 
+  
 
 
-    document.title = "Builder"
+
+
 // Change the state of the sidebar to not visible. Within the app rendering of the component
 setTimeout(() => {
     props.sidebar()
@@ -142,8 +148,10 @@ function showSaved() {
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
             organization: "org-F9f1ePyq3LoFpsLJTOgbGNY0",
-            apiKey: "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",
+            apiKey: process.env.REACT_APP_OPENAI_KEY
         });
+
+        // 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
     
         const openai = new OpenAIApi(configuration)
 
