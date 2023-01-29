@@ -120,10 +120,19 @@ export default function MyProjects(props) {
         )}
         <div className="projects-container">
 
+            <div className="projects-top-area">
 
-                <button onClick={() => {
+                <h2>My Projects</h2>
+
+
+                <button class="save-btn black-bg"onClick={() => {
                     setNewProjectModal(true)
                 }}>Add New</button>
+
+
+            </div>
+
+
 
 
 

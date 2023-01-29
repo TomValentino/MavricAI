@@ -628,6 +628,8 @@ h4 {
   border-radius: 7px;
   border: none;
   cursor: pointer;
+  font-family: Montserrat;
+  font-weight: 500;
 }
 
 
@@ -780,6 +782,14 @@ h4 {
   border-radius: 7px;
   background-color: #3F7CF6;
   color: white;
+  font-family: Montserrat;
+  font-weight: 500;
+}
+
+.black-bg {
+  background-color: black!important;
+
+
 }
 
 
@@ -1046,4 +1056,13 @@ h4 {
   border-radius: 7px;
   background-color: white;
   font-size: 17px;
+}
+
+
+
+.projects-top-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 20px 0 20px;
 }

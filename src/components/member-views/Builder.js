@@ -83,8 +83,10 @@ function saveResult() {
 // Test Function For Showing The Saved Results
 function showSaved() {
 
-    var resultsArea = document.querySelector('.results-container')
-    resultsArea.innerHTML = ""
+    var savedArea = document.querySelector('.saved-container')
+    savedArea.innerHTML = ""
+    savedArea.classList.remove('hidden')
+    document.querySelector('.results-container').classList.add('hidden')
 
     // Access firestorage >> get the saved results >> display them
     firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).collection('saved').get().then((doc) => {
@@ -93,7 +95,7 @@ function showSaved() {
             var div = document.createElement('div')
             div.innerHTML = "No Saved Results! Save some results to see them here..."
             div.classList.add('saved-result')
-            resultsArea.append(div)
+            savedArea.append(div)
         }
     
         doc.forEach((doc) => {
@@ -101,7 +103,7 @@ function showSaved() {
             var div = document.createElement('div')
             div.innerHTML = result
             div.classList.add('saved-result')
-            resultsArea.append(div)
+            savedArea.append(div)
         })
     })
     // Show the active border
@@ -115,6 +117,10 @@ function showSaved() {
     function showResults() {
         document.getElementById('results').classList.add('actf')
         document.getElementById('saved').classList.remove('actf')
+
+        document.querySelector('.results-container').classList.remove('hidden')
+        document.querySelector('.saved-container').classList.add('hidden')
+
     }
 
 
