@@ -10,9 +10,6 @@ import { firestore } from "../../Firebase";
 
 import Loader from "../loader.svg";
 
-import Quill from "quill";
-import 'quill/dist/quill.snow.css'
-
 
 
 
@@ -33,16 +30,7 @@ export default function Builder(props) {
         document.querySelector('.project-title-area').innerHTML = doc.data().ProjectName
     })
 
-    
 
-// Stuff for quill (so it doesn't load 2 menu bar's, which it does anyways!!)
-    const notesBarRef = useCallback((wrapper) => {
-        if (wrapper === null) return
-        wrapper.innerHTML = ""
-        const editor = document.createElement('div')
-        wrapper.append(editor)
-        new Quill("#notes-stage", { theme: "snow"})
-    },[])
 
     document.title = "Builder"
 // Change the state of the sidebar to not visible. Within the app rendering of the component
@@ -61,10 +49,9 @@ setTimeout(() => {
 
 setTimeout(() => {
     document.querySelector('.loader-blocker').classList.add('opacity-0')
-
     setTimeout(() => {
         document.querySelector('.loader-blocker').classList.add('hidden')
-    },3000)
+    },0)
 },3000)
 
 
@@ -90,10 +77,54 @@ function saveResult() {
 // Test Function For Showing The Saved Results
 function showSaved() {
 
+    var resultsArea = document.querySelector('.results-container')
+    resultsArea.innerHTML = ""
 
+    console.log('working')
 
-
+    // Access firestorage >> get the saved results >> display them
+    firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).collection('saved').get().then((docs) => {
+        docs.forEach((doc) => {
+            var result = doc.data().Result
+            var div = document.createElement('div')
+            div.innerHTML = result
+            div.classList.add('saved-result')
+            resultsArea.append(div)
+        });
+    })
+    // Show the active border
+    document.getElementById('results').classList.remove('actf')
+    document.getElementById('saved').classList.add('actf')
 }
+
+
+    // Test Function For Going Back To Resuts
+    function showResults() {
+        document.getElementById('results').classList.add('actf')
+        document.getElementById('saved').classList.remove('actf')
+    }
+
+
+
+
+    // Test Function To Save The Notes To The Database
+    function saveNotes() {
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -275,8 +306,8 @@ function showSaved() {
                 <div className="middle-container">
 
                     <div className="middle-tabs">
-                        <div className="sub-title p20 actf">Results</div>
-                        <div className="sub-title p20">Saved</div>
+                        <div className="sub-title p20 actf" id="results" onClick={showResults}>Results</div>
+                        <div className="sub-title p20" onClick={showSaved} id="saved">Saved</div>
                     </div>
 
                     <div className="results-container"></div>
@@ -300,7 +331,9 @@ function showSaved() {
 
             <div className="notes-area">
 
-                <div id="notes-stage" ref={notesBarRef}></div>
+                <div>Notes Area</div>
+
+                <div onKeyUp={() => {console.log('hi hi hi')}} id="notes-stage" className="h100" contentEditable="true" data-placeholder="Start typing, copy, or paste to get started..."></div>
             </div>
 
 

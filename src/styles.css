@@ -733,6 +733,12 @@ h4 {
     "search-area middle-area notes-area";
 }
 
+.h100 {
+  height: 95%;
+  margin: 20px 0 0 0;
+  border: 1px solid #f2f2f2;
+  border-radius: 7px;
+}
 
 
 .top-nav {
@@ -855,6 +861,7 @@ h4 {
   grid-area: notes-area;
   background-color: white;
   border-left: 1px solid #f2f2f2;
+  padding: 20px;
 }
 
 
@@ -1032,7 +1039,7 @@ h4 {
 
 
 
-.response-container {
+.response-container, .saved-result {
   margin: 20px 0 0 0;
   padding: 30px;
   border: 1px solid #f2f2f2;
