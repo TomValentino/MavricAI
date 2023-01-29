@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Logo from "../../images/logo.svg";
 import Heart from "../../images/heart.svg";
 import FBSvg from "../../images/fb.svg";
+import { useAuth } from "../../contexts/AuthContext"
+
+import { firestore } from "../../Firebase";
 
 
 import Loader from "../loader.svg";
@@ -16,6 +19,21 @@ import 'quill/dist/quill.snow.css'
 
 
 export default function Builder(props) {
+
+    const { currentUser } = useAuth()
+
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const projectID = urlParams.get('projectId')
+
+
+    // TEST -- Setting the title of the project -- Need to tie in with the loading functions
+    firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).get().then((doc) => {
+        document.querySelector('.project-title-area').innerHTML = doc.data().ProjectName
+    })
+
+    
 
 // Stuff for quill (so it doesn't load 2 menu bar's, which it does anyways!!)
     const notesBarRef = useCallback((wrapper) => {
@@ -46,8 +64,8 @@ setTimeout(() => {
 
     setTimeout(() => {
         document.querySelector('.loader-blocker').classList.add('hidden')
-    },1000)
-},1000)
+    },3000)
+},3000)
 
 
 const [middleLoading, setMiddleLoading] = useState(false)
@@ -151,7 +169,7 @@ const [middleLoading, setMiddleLoading] = useState(false)
 
 
                         }}><div className="p10 return">Return</div></Link>
-                        <div className="project-title-area">My Awesome Project</div>
+                        <div className="project-title-area"></div>
                     </div>
 
                     <img className="logo" src={Logo} alt="" />

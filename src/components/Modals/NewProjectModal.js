@@ -22,10 +22,10 @@ export default function NewProjectModal( { closeNewProjectModal}) {
     const projectID = Math.random().toString(36).substr(2, 9)
     // Get the value from the input box, and add it to the datbase
     firestore.collection('users').doc(currentUser.uid).collection('projects').doc(projectID).set({
-      "ProjectName": projectName
+      "ProjectName": projectName,
+      "ProjectID": projectID
     })
   }
-
 
 
 
@@ -37,16 +37,12 @@ export default function NewProjectModal( { closeNewProjectModal}) {
 
       <div className="popup-bg" onClick={closeNewProjectModal}></div>
       <div className="popup-inner-container">
-
-
-        <h1>Create New</h1>
-
-          <input className="add-new-name" type="text" placeholder="My awesome project..." />
-          <button type="submit">Create Project</button>
-
-          <button onClick={createNewProject}>Hi</button>
-        
-        
+        <img src="https://hpanel-main.hostinger.com/img/Illstration-opening.svg" alt="" />
+        <div className="popup-title">Create a new project</div>
+        <div className="popup-descrp">Give your awesome project a name, bitch.</div>
+        <input className="add-new-name" type="text" placeholder="My awesome project..." />
+        <button class="popup-btn" onClick={createNewProject}>Create Project</button>
+        {/* Add in function so when button is clicked, it will show loading animation/effect */}
       </div>  
     
     

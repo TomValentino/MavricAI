@@ -20,6 +20,10 @@ code {
     monospace;
 }
 
+input {
+  -webkit-appearance: none;
+}
+
 
 a:-webkit-any-link {
   color: black;
@@ -555,6 +559,9 @@ h4 {
 }
 
 .popup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -572,23 +579,58 @@ h4 {
   height: 100%;
   background: rgba(0,0,0,0.5);
   z-index: 1001;
-
   cursor: pointer;
 }
 
 .popup-inner-container {
-  position: absolute;
-  top: 200px;
-  left: 50%;
-  transform: translate(-50%);
-  min-width: 650px;
-  min-height: 400px;
+  width: 100%;
+  max-width: 750px;
+  max-height: calc(100vh - 6rem);
+  min-height: 50vh;
   padding: 30px;
   background-color: white;
   border: 1px solid #e4e9f0a4;
   border-radius: 7px;
   z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
 }
+
+.popup-title {
+  margin: 20px 0 0 0;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.popup-descrp {
+  margin: 10px 0 20px 0;
+  font-size: 13px;
+}
+
+
+.add-new-name {
+  padding: 10px!important;
+  min-width: 450px;
+  border: 1px solid #dad9da;
+  border-radius: 7px;
+  font-family: Montserrat;
+}
+
+.popup-btn {
+  min-width: 470px;
+  margin: 10px 0 0 0;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}
+
+
 
 .slideout {
 
@@ -947,3 +989,38 @@ h4 {
   width: 75px;
   min-height: 70px
 }
+
+
+
+
+
+
+
+.saved-projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px;
+}
+
+.project-tile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #f2f2f2;
+  border-radius: 7px;
+  padding: 20px;
+  background-color: white;
+}
+
+.access-project-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  margin: 10px 0 0 0;
+  cursor: pointer;
+}
+

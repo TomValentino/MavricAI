@@ -6,8 +6,13 @@ import { firestore } from "../../Firebase"
 
 import NewProjectModal from "../Modals/NewProjectModal";
 
+import Builder from "./Builder";
+
+
 
 export default function MyProjects(props) {
+
+  
 
     const { currentUser } = useAuth()
     const [newProjectModal, setNewProjectModal] = useState(false);
@@ -22,14 +27,14 @@ export default function MyProjects(props) {
     useEffect(() => {
     setTimeout(() => {
         setLoading(false)
-        
+        setTimeout(() => {getProjects() },0)
     },500)
     }, []);
 
     const [showSideBar, setShowSideBar] = useState(true);
-    // setTimeout(() => {
+    setTimeout(() => {
         props.sidebar()
-    // },0)
+    },0)
 
 
 
@@ -41,6 +46,19 @@ export default function MyProjects(props) {
         
     // })
 
+
+
+    function changeURL() {
+        <>
+        <Link to="/builder?projectId=1234" />
+
+        </>
+    }
+    changeURL()
+
+
+
+
     
     function getProjects() {
 
@@ -49,25 +67,50 @@ export default function MyProjects(props) {
             firestore.collection('users').doc(currentUser.uid).collection('projects').get().then((docs) => {
 
                 docs.forEach(doc => {
+                   
 
                     console.log(doc.data())
 
                     // Create a new div and add the project name to it
                     const newDiv = document.createElement('div')
-                    newDiv.className = "saved-project"
+                    newDiv.className = "project-tile"
                     newDiv.innerHTML = doc.data().ProjectName
+
+                    // Create a button
+                    const newButton = document.createElement('a')
+
+                    // newButton.href = '/builder?projectId=' + doc.id
+                    
+
+                    // Give the button ID the ID of the project
+                    newButton.className = "access-project-btn"
+                    newButton.id = doc.id
+                    newButton.innerHTML = "Open Builder"
+
+                    newDiv.appendChild(newButton)
+
+                    // Add an event listener to the button
+                    newButton.addEventListener('click', (e) => {
+                        var projectID = e.target.id
+                        window.history.pushState('page2', projectID, '/builder?projectId=' + projectID);
+
+                        // window.location = '/builder?projectId=' + projectID
+                    })
 
                     // Append the new div to the saved-projects div
                     document.querySelector('.saved-projects').appendChild(newDiv)
+
+                 
                     
                     })
-                });
-            
+                }).finally(() => {
+
+                    const fuckTest = () => {<Link to="/builder?projectId=1234">Hi</Link>}
+                    document.querySelector('.project-tile').appendChild(fuckTest)
+
+                })
+               
             }
-
-            getProjects()
-
-   
 
 
 
@@ -91,19 +134,11 @@ export default function MyProjects(props) {
         )}
         <div className="projects-container">
 
-            <h1>My Projects</h1>
-            <h4>This is where I will manage all of the projects, be able to add tags, filter, delete, and add new projects too.</h4>
 
                 <button onClick={() => {
                     setNewProjectModal(true)
                 }}>Add New</button>
 
-            <Link to="/builder">
-                <button onClick={() => {
-                    props.sidebar()
-
-                }}>Click</button>
-            </Link>
 
 
 

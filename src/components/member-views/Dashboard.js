@@ -8,6 +8,8 @@ import Loader from "../loader.svg";
 
 function Dashboard() {
 
+
+  console.log('dashy')
   document.title = "Dashboard"
 
   // Code to hide the loader on page load
