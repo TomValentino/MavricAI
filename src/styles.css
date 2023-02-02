@@ -850,15 +850,21 @@ h4 {
 
 .template-title {
   margin: 0 0 0 10px;
+  font-size: 15px;
+}
+
+.font-15 {
+  font-size: 15px;
 }
 
 
 .search-input {
   font-family: Montserrat;
-  padding: 10px;
+  font-size: 15px;
+  padding: 15px;
   margin: 15px 0 0 0;
-  min-width: calc(100% - 27px);
-  max-width: calc(100% - 27px);
+  min-width: calc(100% - 37px);
+  max-width: calc(100% - 37px);
   min-height: 250px;
   border: 1px solid #f2f2f2;
   border-radius: 7px;
@@ -965,7 +971,8 @@ h4 {
 
 .save-icon {
   cursor: pointer;
-
+  width: 24px;
+  height: 24px;
 }
 
 .stage{
@@ -1055,7 +1062,7 @@ h4 {
   border: 1px solid #f2f2f2;
   border-radius: 7px;
   background-color: white;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 

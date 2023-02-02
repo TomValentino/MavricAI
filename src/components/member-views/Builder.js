@@ -154,7 +154,7 @@ function showSaved() {
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
             organization: "org-F9f1ePyq3LoFpsLJTOgbGNY0",
-            apiKey: ""
+            apiKey: "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"
         });
 
     
@@ -165,9 +165,8 @@ function showSaved() {
                 model: "text-davinci-003",
                 prompt: input,
                 temperature: 1,
-                max_tokens: 100,
+                max_tokens: 1000,
             });
-    console.log(response.data.choices[0].text);
 
         // Hide the cool image saying to input some shit...
         document.querySelector('.no-results-img').classList.add('hidden')
@@ -210,7 +209,7 @@ function showSaved() {
         bottomArea.appendChild(bottomLftContainer)
         bottomArea.appendChild(saveIcon)
         newDiv.appendChild(bottomArea)
-        middle.appendChild(newDiv)
+        middle.insertBefore(newDiv, middle.childNodes[0])
 
         await document.getElementById('middle-loader').classList.add('hidden')
 
@@ -335,7 +334,7 @@ function showSaved() {
                     <div className="results-container">
 
                         <div className="no-results-img">
-                        Write your shit in the search bar...Replace for a sweet ass picture!
+                        Write your shit in the search bar...Replace for a sweet ass picture! -- ALSO, maybe place here some tips on how they can search? 
                         </div>
 
 
@@ -361,7 +360,7 @@ function showSaved() {
 
             <div className="notes-area">
 
-                <div>Notes Area</div>
+                <div className="font-15">Notes Area</div>
 
                 <div onKeyUp={() => {console.log('hi hi hi')}} id="notes-stage" className="h100" contentEditable="true" data-placeholder="Start typing, copy, or paste to get started..."></div>
             </div>

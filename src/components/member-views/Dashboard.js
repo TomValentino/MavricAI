@@ -36,6 +36,7 @@ function Dashboard() {
         <div className="reviewAppIdea">
 
           <h2>Dashboard</h2>
+          <h2>ADD IN A POLL FOR USERS -- TIED WITH FIREBASE -- ON WHETHER WE SHOULD INCLUDE THE GRAMMERLY WIDGET !!</h2>
     
           <h4>Review App Idea, So Much MONEY</h4>
           <input type="text" name="reviewAppIdea" id="reviewAppIdea" />
