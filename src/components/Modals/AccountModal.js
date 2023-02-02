@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { useAuth } from "../../contexts/AuthContext"
+import { useAuth } from "../../Contexts/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
-import { auth } from "../../Firebase"
-import { firestore } from "../../Firebase"
 
 
 import Logo from '../../images/logo.svg'
