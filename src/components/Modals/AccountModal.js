@@ -3,7 +3,7 @@ import { useAuth } from "../../Contexts/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 
 
-import Logo from '../../images/logo.svg'
+import Logo from '../../Images/Logo.svg'
 
 function AccountModal({ closeAccountModal }) {
 
@@ -51,8 +51,10 @@ function AccountModal({ closeAccountModal }) {
 
     <>
 
-      <div className="popup-bg" onClick={closeAccountModal}></div>
-      <div className="slideout">
+    <div className="account-modal-container">
+
+      <div className="account-modal-bg" onClick={closeAccountModal}></div>
+      <div className="account-modal-slider">
 
 
         <h1>Howdy cunt fucker</h1>
@@ -77,6 +79,8 @@ function AccountModal({ closeAccountModal }) {
         
         
       </div>  
+
+      </div>
     
     
     </>

@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 
 import { AuthProvider } from "../Contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
+import { Link } from "react-router-dom";
 
 import Login from "./Public/Login";
 import Signup from "./Public/Signup";
@@ -20,6 +21,10 @@ import Hamburger from "../Images/Hamburger.svg";
 import Account from "../Images/Account.svg";
 import Settings from "../Images/Settings.svg";
 
+import MainSideBar from "./Modals/MainSideBar";
+
+import AccountModal from "./Modals/AccountModal";
+
 
 
 
@@ -28,6 +33,12 @@ function App() {
 
 
     const [showSideBar, setShowSideBar] = useState(true);
+    const [accountModal, setAccountModal] = useState(false);
+    const closeAccountModal = () => {
+      setAccountModal(false)
+
+    }
+
 
 
 
@@ -35,12 +46,12 @@ function App() {
     // Function to show/hide the hamburger sidebar
     function ToggleSideBar() 
     {
-      document.querySelector('.hamburger-fs-container').classList.remove('hidden')
+      document.querySelector('.sidebar-modal-container').classList.remove('hidden')
 
     }
 
     function HideSideBar () {
-      document.querySelector('.hamburger-fs-container').classList.add('hidden')
+      document.querySelector('.sidebar-modal-container').classList.add('hidden')
       console.log('hi')
     }
 
@@ -66,17 +77,26 @@ function App() {
               <img className="hamburger" alt="" src={Hamburger} />
             </div>
 
-            <img className="logo" alt="" src={Logo} />
+            <Link className="logo" to="/">
+              <img alt="" src={Logo} />
+            </Link>
 
             <div className="menu-right-container">
               <img className="settings" alt="" src={Settings} />
-              <img className="account" alt="" src={Account} />
+              <img className="account" alt="" src={Account} onClick={() => { setAccountModal(true) }}/>
             </div>
 
-
-
-
           </div>
+
+             {/* If account modal state = true (on click), show this */}
+             {accountModal && (
+
+
+              <AccountModal closeAccountModal={closeAccountModal} />
+             
+
+              )
+          }
 
           <div className="content">
 
@@ -128,10 +148,10 @@ function App() {
               
           </div>
 
-          <div className="hamburger-fs-container hidden">
-            <div className="hamburger-fs-bg" onClick={HideSideBar}></div>
-            <div className="hamburger-fs-slider"></div>
-          </div>
+{/* REPACKAGE INTO A MODAL COMPONENT */}
+
+<MainSideBar />
+          
 
         </div>
 

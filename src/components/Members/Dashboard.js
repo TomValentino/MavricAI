@@ -1,11 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import Loader from '../../Images/Loader.svg'
 
 export default function Dashboard() {
+
+  // Code to hide the loader on page load
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    },750)
+  }, []);
+
+
   return (
+    <>
+    {loading && (
+      <div id="loader-container">
+        <div className="loader-bg"></div>
+        <img className="loader" src={Loader} />
+      </div>
+    )}
     <div>
-      Dashboard
-      <Link to="/projects">My Projects</Link>
+      <h2>Dashboard</h2>
     </div>
+    </>
   )
 }

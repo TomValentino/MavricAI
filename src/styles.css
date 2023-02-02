@@ -1,3 +1,5 @@
+/* GENERAL STYLING */
+
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700);
 
 #root {
@@ -7,7 +9,6 @@
   display: flex;
 }
 
-
 body {
   margin: 0;
   font-family: Montserrat;
@@ -15,15 +16,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 input {
   -webkit-appearance: none;
 }
-
 
 a:-webkit-any-link {
   color: black;
@@ -43,29 +38,11 @@ input[type="text" i] {
 
 a:link { text-decoration: none; }
 
-
 a:visited { text-decoration: none; }
-
 
 a:hover { text-decoration: none; }
 
-
 a:active { text-decoration: none; }
-
-
-.hidden {
-  display: none;
-}
-
-.opacity-0 {
-  opacity: 0!important;
-  transition: opacity 0.3s;
-}
-
-.opacity-1 {
-  opacity: 1;
-  transition: opacity 1s;
-}
 
 h1 {
   margin: 0;
@@ -81,6 +58,27 @@ h4 {
 }
 
 
+
+/* MY TERMS */
+
+.hidden {
+  display: none;
+}
+
+.opacity-0 {
+  opacity: 0!important;
+  transition: opacity 0.3s;
+}
+
+.opacity-1 {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+
+
+/* GENERAL STUFF */
+
 .help-icon {
   position: fixed;
   bottom: 20px;
@@ -89,18 +87,22 @@ h4 {
   z-index: 99999;
 }
 
-
-
-
 .stage {
-
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-
 }
+
+.content {
+  overflow: auto;
+  height: calc(100vh - 75px);
+  background-color: #FCFCFD;
+}
+
+
+/* MENU AREA */
 
 .menu-bar {
   min-height: 75px;
@@ -112,7 +114,7 @@ h4 {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
   padding: 0 20px 0 20px;
   position: relative;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .hamburger-container {
@@ -124,6 +126,7 @@ h4 {
 .logo{
   position: absolute;
   left: calc(50% - 62px);
+  cursor: pointer;
 }
 
 .menu-right-container {
@@ -132,34 +135,83 @@ h4 {
   display: flex;
   align-items: center;
   gap: 28px;
+}
 
+.account {
+  cursor: pointer;
 }
 
 
+/* SIDEBAR FULL SCREEN */
 
-.content {
-  overflow: auto;
-  height: calc(100vh - 75px);
-  background-color: #FCFCFD;
-}
-
-
-
-
-
-/* HAMBURGER FULL SCREEN */
-
-
-.hamburger-fs-container {
-  /* position: fixed;
+.sidebar-modal-bg {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100; */
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+  cursor: pointer;
 }
 
-.hamburger-fs-bg {
+.sidebar-modal-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  min-width: 240px;
+  background-color: white;
+  padding: 20px;
+  overflow: auto;
+}
+
+.sidebar-menu-container {
+  margin: 30px 0 0 ;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-bottom-area-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 240px;
+  padding: 20px;
+}
+
+.sidebar-account-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.sidebar-account-inner-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
+/* ACCOUNT MODAL */
+
+.account-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+}
+
+.account-modal-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -170,14 +222,47 @@ h4 {
   cursor: pointer;
 }
 
-.hamburger-fs-slider {
+.account-modal-slider {
+  margin: 150px 0 0 0;
+  max-height: 50%;
+  z-index: 100;
+  min-width: 600px;
+  background-color: white;
+  padding: 50px;
+  overflow: auto;
+  border-radius: 10px;
+}
+
+
+/* LOADER FOR WHEN CHANGING PAGES (VIEWS) */
+
+#loader-container {
   position: fixed;
-  top: 0;
+  top: 75px;
+  right: 0;
   left: 0;
   bottom: 0;
-  z-index: 100;
-  min-width: 400px;
-  background-color: white;
-  padding: 20px;
-  overflow: auto;
+  z-index: 999;
+  height: 100vh;
+}
+
+.loader-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+}
+
+.loader {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: calc(40vh);
+  width: 100px;
+  height: 100px;
+  opacity: 1;
 }
