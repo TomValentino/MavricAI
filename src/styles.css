@@ -206,7 +206,7 @@ h4 {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99;
+  z-index: 1001;
   display: flex;
   justify-content: center;
 }
@@ -218,14 +218,14 @@ h4 {
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
-  z-index: 99;
+  z-index: 1001;
   cursor: pointer;
 }
 
 .account-modal-slider {
   margin: 150px 0 0 0;
   max-height: 50%;
-  z-index: 100;
+  z-index: 1001;
   min-width: 600px;
   background-color: white;
   padding: 50px;

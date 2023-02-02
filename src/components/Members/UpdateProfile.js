@@ -3,13 +3,8 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from  '../../Contexts/AuthContext'
 
-// Create a const as an arrow function
-
-
 
 export default function UpdateProfile() {
-
-
 
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -18,25 +13,19 @@ export default function UpdateProfile() {
   const [ error, setError ] = useState('')
   const [ loading, setLoading ] = useState('')
   const history = useNavigate()
-
-
-function handleSubmit(e) {
+  
+  function handleSubmit(e) {
     e.preventDefault()
-
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
         return setError("Passwords do not match")
       }
-
     const promises = []
       if (emailRef.current.value != currentUser.email){
         promises.push(updateEmail(emailRef.current.value))
       }
-
       if (passwordRef.current.value) {
         promises.push(updatePassword(passwordRef.current.value))
-
       }
-
       Promise.all(promises).then(() => {
         history.push('/')
       }).catch(() => {
@@ -44,11 +33,8 @@ function handleSubmit(e) {
       }).finally(() => {
         setLoading(false)
       })
-
     }
 
-  
-  
   return (
     <>
       <Card>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Loader from '../../Images/Loader.svg'
 
-
 export default function MyProjects() {
 
   // Code to hide the loader on page load

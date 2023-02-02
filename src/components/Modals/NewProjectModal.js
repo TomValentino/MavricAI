@@ -3,19 +3,14 @@ import { useAuth } from "../../contexts/AuthContext"
 import { firestore } from "../../Firebase"
 
 
-
-
-
 export default function NewProjectModal( { closeNewProjectModal}) {
 
-  const { currentUser } = useAuth()
+    const { currentUser } = useAuth()
 
-
-  // Clear the previous value of the input box
-  setTimeout(() => {document.querySelector('.add-new-name').value = ""},0)
-
-  // Function to create a new project
-  const createNewProject = () => {
+    // Clear the previous value of the input box
+    setTimeout(() => {document.querySelector('.add-new-name').value = ""},0)
+    // Function to create a new project
+    const createNewProject = () => {
     document.getElementsByClassName('popup-btn')[0].innerHTML = "Creating..."
     // Get the value of the input box
     const projectName = document.querySelector('.add-new-name').value
@@ -30,20 +25,11 @@ export default function NewProjectModal( { closeNewProjectModal}) {
       document.getElementsByClassName('popup-btn')[0].innerHTML = "Finished!"
       // closeNewProjectModal()
       window.location.href = '/builder?id=' + projectID
-    
     })
-
-
-  }
-
-
-
+    }
 
   return (
-
     <>
-
-
       <div className="popup-bg" onClick={closeNewProjectModal}></div>
       <div className="popup-inner-container">
         <img src="https://hpanel-main.hostinger.com/img/Illstration-opening.svg" alt="" />
@@ -53,12 +39,6 @@ export default function NewProjectModal( { closeNewProjectModal}) {
         <button class="popup-btn" onClick={createNewProject}>Create Project</button>
         {/* Add in function so when button is clicked, it will show loading animation/effect */}
       </div>  
-    
-    
     </>
-  
-  
-  
     )
-   
 }

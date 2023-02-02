@@ -65,11 +65,10 @@ export function AuthProvider({ children }) {
         updatePassword
     }
 
-
-  return (
+return (
     <AuthContext.Provider value={value}>
     {!loading && children}
-  </AuthContext.Provider>
-  )
+    </AuthContext.Provider>
+)
 }
 
